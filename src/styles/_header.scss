@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    width: 133px;
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    width: 18px;
+    margin-right: 1rem;
+    cursor: pointer;
+
+    &--cart {
+      width: 20px;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
