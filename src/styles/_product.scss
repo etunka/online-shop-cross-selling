@@ -1,6 +1,10 @@
 .product {
   &__image {
-    max-width: 100%;
+    width: 85%;
+
+    img {
+      max-width: 100%;
+    }
   }
 
   &__brand {
@@ -20,13 +24,59 @@
   }
 
   &__sizes {
-    display: flex;
-    justify-content: space-between;
+    // display: flex;
+    // justify-content: space-between;
     border: 1px solid lightgray;
     padding: 0.5rem;
 
     label {
       font-weight: 300;
+    }
+
+    select {
+      width: 100%;
+    }
+  }
+
+  &__selected-size {
+    display: none;
+  }
+
+  .product-confirmation & {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.25rem;
+
+    &__title {
+      margin-bottom: 0;
+    }
+
+    &__image {
+      flex: 0 0 25%;
+    }
+
+    &__info {
+      margin-left: 0.75rem;
+    }
+
+    &__brand {
+      font-size: 1rem;
+    }
+
+    &__price {
+      font-size: 0.75rem;
+      margin-bottom: 0.125rem;
+      margin-top: 0.5rem;
+    }
+
+    &__sizes {
+      display: none;
+    }
+
+    &__selected-size {
+      display: block;
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
     }
   }
 }

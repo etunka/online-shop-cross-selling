@@ -1,38 +1,54 @@
 import React, { FC } from "react";
+import { ProductResponseData } from "../types";
 
 type Props = {
-  imageUrl: string;
-  brand?: string;
-  title: string;
-  price: number;
-  sizeList?: number[];
+  product: ProductResponseData;
+  selectOption?: (v: string) => void;
+  selectedSize?: string;
 };
 
 export const Product: FC<Props> = ({
-  imageUrl,
-  brand,
-  title,
-  price,
-  sizeList,
+  product,
+  selectedSize,
+  selectOption = () => null,
 }) => {
   return (
     <article className="product">
-      <img src={imageUrl} alt="product" className="product__image" />
-      <div>
-        {!!brand && <h3 className="product__brand">{brand}</h3>}
-        <h4 className="product__title">{title}</h4>
-        <p className="product__price">{price}</p>
-        {!!sizeList && (
+      <div className="product__image">
+        <img
+          src={product.data.attributes.main_image.image_sizes.medium}
+          alt="product"
+        />
+      </div>
+      <div className="product__info">
+        <h3 className="product__brand">
+          {product.data.attributes.brand.attributes.name}
+        </h3>
+        <h4 className="product__title">
+          {product.data.attributes.product_classification}
+        </h4>
+        <p className="product__price">
+          {
+            product.data.attributes.price.attributes.available_max_regular_price
+              .amount
+          }
+        </p>
+        {!!product.data.attributes.child_products && (
           <div className="product__sizes">
-            <label htmlFor="sizes">Kies je maat</label>
-            <select name="sizes">
-              <option value=""></option>
-              {sizeList.map((size) => (
-                <option value={size}>{size}</option>
-              ))}
+            <select
+              onChange={(e) => selectOption(e.target.value)}
+              id="sizes"
+              name="sizes"
+            >
+              <option value="">Kies je maat</option>
+              {product.data.attributes.child_products.map((childProduct) => {
+                const value = childProduct.attributes[0].value;
+                return <option value={value}>{value}</option>;
+              })}
             </select>
           </div>
         )}
+        <div className="product__selected-size">Maat: {selectedSize}</div>
       </div>
     </article>
   );

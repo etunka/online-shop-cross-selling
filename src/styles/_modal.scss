@@ -1,0 +1,13 @@
+.modal {
+  &__button {
+    background: none;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    cursor: pointer;
+
+    img {
+      width: 10px;
+    }
+  }
+}
