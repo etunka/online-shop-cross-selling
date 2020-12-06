@@ -4,14 +4,11 @@ import { Button } from "./Button";
 
 type Props = {
   productData: CrossSellProductType;
-  selectOption?: (v: string) => void;
-  selectedSize?: string;
 };
 
 export const CrossSellProduct: FC<Props> = ({ productData }) => {
   const { product } = productData.attributes;
   const rollupAttributes = product.attributes.rollup_attributes;
-  const hasChildProduct = !!rollupAttributes;
   const productAttributes = product.attributes.product_attributes;
 
   // select size,etc
@@ -25,7 +22,10 @@ export const CrossSellProduct: FC<Props> = ({ productData }) => {
   return (
     <div className="cross-sell__product">
       <div className="cross-sell__image">
-        <img src={product.attributes.main_image.image_sizes.small} alt="" />
+        <img
+          src={product.attributes.main_image.image_sizes.small}
+          alt="cross-sell-product"
+        />
       </div>
       <div className="cross-sell__info">
         <h5 className="cross-sell__name">{product.attributes.name}</h5>
@@ -43,6 +43,7 @@ export const CrossSellProduct: FC<Props> = ({ productData }) => {
                     onChange={(e) => setSelectedOption(e.target.value)}
                     id="sizes"
                     name="sizes"
+                    data-testid="cross-sell-product-select"
                   >
                     <option value="">Kies een optie</option>
                     {attributeList.map((value) => {
@@ -62,8 +63,13 @@ export const CrossSellProduct: FC<Props> = ({ productData }) => {
             className="cross-sell__button"
             disabled={!!rollupAttributes && selectedOption === ""}
             onClick={() => setButtonIcon(checkIcon)}
+            testId="cross-sell-add-to-cart-button"
           >
-            <img src={buttonIcon} alt="cart" />
+            <img
+              src={buttonIcon}
+              alt="cart"
+              data-testid="cross-sell-button-icon"
+            />
           </Button>
         </div>
       </div>

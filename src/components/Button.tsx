@@ -7,6 +7,7 @@ type Props = {
   onClick?: () => void;
   disabled?: boolean;
   className?: string;
+  testId?: string;
 };
 
 export const Button: FC<Props> = ({
@@ -16,6 +17,7 @@ export const Button: FC<Props> = ({
   disabled = false,
   children,
   className = "",
+  testId,
 }) => {
   const buttonClass = classNames("button", className, {
     "button--primary": theme === "primary",
@@ -24,7 +26,12 @@ export const Button: FC<Props> = ({
     "button--disabled": disabled,
   });
   return (
-    <button onClick={onClick} className={buttonClass} disabled={disabled}>
+    <button
+      onClick={onClick}
+      className={buttonClass}
+      disabled={disabled}
+      data-testid={testId}
+    >
       {children}
     </button>
   );

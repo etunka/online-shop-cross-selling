@@ -31,7 +31,6 @@ export type CrossSellProductType = {
           [key: string]: string[];
         };
         rollup_attributes: string[] | null;
-        product_id: number;
       };
     };
   };

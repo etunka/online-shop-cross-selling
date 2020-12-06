@@ -3,7 +3,10 @@ import { Button } from "./Button";
 
 export const ProductConfirmation: FC = ({ children }) => {
   return (
-    <div className="product-confirmation">
+    <div
+      className="product-confirmation"
+      data-testid="product-confirmation-container"
+    >
       <div className="product-confirmation__title">
         <img
           className="product-confirmation__icon"

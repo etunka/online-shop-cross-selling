@@ -39,6 +39,7 @@ export const Product: FC<Props> = ({
               onChange={(e) => selectOption(e.target.value)}
               id="sizes"
               name="sizes"
+              data-testid="main-product-select"
             >
               <option value="">Kies je maat</option>
               {product.data.attributes.child_products.map((childProduct) => {
