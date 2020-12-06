@@ -57,7 +57,6 @@ export const CrossSellProduct: FC<Props> = ({ productData }) => {
                 </div>
               );
             })}
-
           <Button
             theme="primary"
             className="cross-sell__button"

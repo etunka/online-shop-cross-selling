@@ -4,6 +4,8 @@
 
 select {
   border: none;
+  background-color: transparent;
+
   &:focus {
     outline: none;
   }
@@ -11,6 +13,10 @@ select {
 
 button {
   border: none;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 img {

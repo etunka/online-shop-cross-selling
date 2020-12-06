@@ -6,15 +6,6 @@
   padding: 0.75rem;
   cursor: pointer;
 
-  &:focus {
-    outline: none;
-  }
-
-  img {
-    width: 23px;
-    margin-left: 0.5rem;
-  }
-
   &--primary {
     background-color: #f27800;
     color: #ffffff;
@@ -29,6 +20,12 @@
   &--large {
     width: 100%;
     margin: 1rem 0;
+  }
+
+  &--main {
+    img {
+      width: 23px;
+    }
   }
 
   &--disabled {

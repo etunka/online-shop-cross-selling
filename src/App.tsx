@@ -9,30 +9,7 @@ import Modal from "react-modal";
 import { ProductConfirmation } from "./components/ProductConfirmation";
 import { CrossSell } from "./components/CrossSell";
 import { fetchData } from "./helper";
-
-export const productDataUrl =
-  "http://dump.dataplatform.shoes/20201005_frontend_assignment/prod_details_362950.json";
-
-export const crossSellDataUrl =
-  "http://dump.dataplatform.shoes/20201005_frontend_assignment/cross_sell_products_for_362950.json";
-
-// React Modal
-const modalStyle = {
-  backgroundColor: "#fff",
-
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    inset: "50% auto auto 50%",
-  },
-  overlay: {
-    backgroundColor: "rgb(86, 84, 83, 0.75)",
-  },
-};
+import { crossSellDataUrl, modalStyle, productDataUrl } from "./constants";
 
 function App() {
   // main product data
@@ -68,6 +45,7 @@ function App() {
             <Product product={product} selectOption={setSelectedOption} />
             <Button
               theme="primary"
+              className="button--main"
               size="large"
               onClick={() => setIsOpen(true)}
               disabled={hasChildProduct && selectedOption === ""}

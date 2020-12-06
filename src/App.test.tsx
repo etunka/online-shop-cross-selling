@@ -2,10 +2,11 @@ import "isomorphic-fetch";
 import React from "react";
 import { render, waitFor, fireEvent } from "@testing-library/react";
 import fetchMock from "fetch-mock";
-import App, { productDataUrl, crossSellDataUrl } from "./App";
+import App from "./App";
 import { productData } from "./__mocks__/productData";
 import { crossSellData } from "./__mocks__/crossSellData";
 import Modal from "react-modal";
+import { crossSellDataUrl, productDataUrl } from "./constants";
 
 fetchMock.get(productDataUrl, productData);
 fetchMock.get(crossSellDataUrl, crossSellData);

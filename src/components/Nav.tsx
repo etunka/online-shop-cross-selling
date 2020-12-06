@@ -11,7 +11,6 @@ export const Nav: FC = () => {
         ></img>
         <p className="nav__text">menu</p>
       </div>
-
       <form method="POST" className="nav__form">
         <textarea
           className="nav__search"

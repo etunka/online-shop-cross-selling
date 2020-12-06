@@ -1,6 +1,5 @@
 .nav {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin-top: 1rem;
 
@@ -23,13 +22,13 @@
     flex: 0 0 88%;
     align-items: center;
     justify-content: space-around;
-    border: 1px solid lightgray;
+    border: 1px solid #d3d3d3;
     height: 35px;
   }
 
   &__search {
     border: none;
     flex: 0 0 85%;
-    line-height: 0.5;
+    line-height: 0.25;
   }
 }

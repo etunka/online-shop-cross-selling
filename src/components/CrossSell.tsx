@@ -10,9 +10,7 @@ export const CrossSell: FC<Props> = ({ products }) => {
   return (
     <div className="cross-sell">
       <h4 className="cross-sell__title">Maak je outfit compleet met...</h4>
-
       {products.map((productData, key) => {
-        const { product } = productData.attributes;
         return <CrossSellProduct productData={productData} key={key} />;
       })}
     </div>
