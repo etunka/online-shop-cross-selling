@@ -15,6 +15,7 @@ test("flow with a product with child products", async () => {
   const { getByTestId, queryByTestId, container } = render(<App />);
 
   expect(queryByTestId("app")).toBeInTheDocument();
+  // product-container should not be there before the product data is fetched
   expect(queryByTestId("product-container")).not.toBeInTheDocument();
   // we're waiting for fetch requests on component mount
   await waitFor(() => getByTestId("product-container"));
