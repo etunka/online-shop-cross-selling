@@ -3,20 +3,24 @@ import classNames from "classnames";
 
 type Props = {
   theme?: "primary" | "secondary" | "small-primary";
+  size?: "small" | "large";
   onClick?: () => void;
   disabled?: boolean;
+  className?: string;
 };
 
 export const Button: FC<Props> = ({
   theme,
+  size,
   onClick,
   disabled = false,
   children,
+  className = "",
 }) => {
-  const buttonClass = classNames("button", {
+  const buttonClass = classNames("button", className, {
     "button--primary": theme === "primary",
     "button--secondary": theme === "secondary",
-    "button--small-primary": theme === "small-primary",
+    "button--large": size === "large",
     "button--disabled": disabled,
   });
   return (

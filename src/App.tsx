@@ -16,6 +16,7 @@ const productDataUrl =
 const crossSellDataUrl =
   "http://dump.dataplatform.shoes/20201005_frontend_assignment/cross_sell_products_for_362950.json";
 
+// React Modal Library
 const modalStyle = {
   backgroundColor: "#fff",
 
@@ -47,9 +48,9 @@ function App() {
   >(undefined);
 
   // confirmation modal
-  const [modalIsOpen, setIsOpen] = useState(true); //DO NOT FORGET TO CHANGE THIS IN THE END!
+  const [modalIsOpen, setIsOpen] = useState(false);
 
-  // select size,etc
+  // select shoe size
   const [selectedOption, setSelectedOption] = useState("");
 
   useEffect(() => {
@@ -71,6 +72,7 @@ function App() {
         <Product product={product} selectOption={setSelectedOption} />
         <Button
           theme="primary"
+          size="large"
           onClick={() => setIsOpen(true)}
           disabled={hasChildProduct && selectedOption === ""}
         >

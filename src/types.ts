@@ -27,7 +27,10 @@ export type CrossSellProductType = {
             amount: number;
           };
         };
-        rollup_attribute_set: string | null;
+        product_attributes: {
+          [key: string]: string[];
+        };
+        rollup_attributes: string[] | null;
         product_id: number;
       };
     };

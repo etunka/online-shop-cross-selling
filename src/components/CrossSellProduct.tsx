@@ -1,12 +1,6 @@
-import React, { FC, useEffect, useState } from "react";
-import { fetchData } from "../helper";
-import { CrossSellProductType, ProductResponseData } from "../types";
+import React, { FC, useState } from "react";
+import { CrossSellProductType } from "../types";
 import { Button } from "./Button";
-
-const completeProductDataUrl = (
-  productId: any
-) => `http://dump.dataplatform.shoes/20201005_frontend_assignment/prod_details_${productId}.jso
-n`;
 
 type Props = {
   productData: CrossSellProductType;
@@ -16,17 +10,17 @@ type Props = {
 
 export const CrossSellProduct: FC<Props> = ({ productData }) => {
   const { product } = productData.attributes;
-  const hasChildProduct = !!product.attributes.rollup_attribute_set;
+  const rollupAttributes = product.attributes.rollup_attributes;
+  const hasChildProduct = !!rollupAttributes;
+  const productAttributes = product.attributes.product_attributes;
 
-  const [completeProduct, setProduct] = useState<
-    ProductResponseData | undefined
-  >(undefined);
+  // select size,etc
+  const [selectedOption, setSelectedOption] = useState("");
 
-  useEffect(() => {
-    fetchData(
-      completeProductDataUrl(product.attributes.product_id)
-    ).then((data) => setProduct(data));
-  }, []);
+  // change button icon when clicked
+  const cartIcon = "./icons/cart-white.png";
+  const checkIcon = "./icons/check-white.png";
+  const [buttonIcon, setButtonIcon] = useState(cartIcon);
 
   return (
     <div className="cross-sell__product">
@@ -39,24 +33,37 @@ export const CrossSellProduct: FC<Props> = ({ productData }) => {
           {product.attributes.price.available_max_regular_price.amount}
         </p>
         <div className="cross-sell__buttons">
-          {/* {!!product.data.attributes.child_products && (
-        <div className="product__sizes">
-          <select
-            onChange={(e) => selectOption(e.target.value)}
-            id="sizes"
-            name="sizes"
-          >
-            <option value="">Kies je maat</option>
-            {product.data.attributes.child_products.map((childProduct) => {
-              const value = childProduct.attributes[0].value;
-              return <option value={value}>{value}</option>;
-            })}
-          </select>
-        </div>
-      )} */}
+          {!!rollupAttributes &&
+            rollupAttributes.map((rollupKey) => {
+              const attributeList = productAttributes[rollupKey];
 
-          <Button theme="small-primary" disabled={hasChildProduct}>
-            In winkelmandje <img src="./icons/cart-white.png" alt="cart" />
+              return (
+                <div className="cross-sell__options" key={rollupKey}>
+                  <select
+                    onChange={(e) => setSelectedOption(e.target.value)}
+                    id="sizes"
+                    name="sizes"
+                  >
+                    <option value="">Kies een optie</option>
+                    {attributeList.map((value) => {
+                      return (
+                        <option value={value} key={value}>
+                          {value}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+              );
+            })}
+
+          <Button
+            theme="primary"
+            className="cross-sell__button"
+            disabled={!!rollupAttributes && selectedOption === ""}
+            onClick={() => setButtonIcon(checkIcon)}
+          >
+            <img src={buttonIcon} alt="cart" />
           </Button>
         </div>
       </div>

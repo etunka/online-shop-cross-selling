@@ -14,8 +14,12 @@ export const ProductConfirmation: FC = ({ children }) => {
       </div>
       {children}
       <div className="product-confirmation__buttons">
-        <Button theme="primary">Ga naar winkelmandje</Button>
-        <Button theme="secondary">Verder shoppen</Button>
+        <Button theme="primary" className="product-confirmation__button">
+          Ga naar winkelmandje
+        </Button>
+        <Button theme="secondary" className="product-confirmation__button">
+          Verder shoppen
+        </Button>
       </div>
     </div>
   );

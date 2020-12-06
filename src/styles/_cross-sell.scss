@@ -22,12 +22,35 @@
   }
 
   &__price {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     font-size: 0.75rem;
+  }
+
+  &__options {
+    border: 1px solid lightgray;
+    padding: 0.25rem;
+    margin-right: 1rem;
+    font-size: 0.875rem;
+
+    label {
+      font-weight: 300;
+    }
+
+    select {
+      width: 100%;
+    }
   }
 
   &__buttons {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+  }
+
+  &__button {
+    padding: 0.5rem 0.5rem 0.5rem 0;
+    img {
+      width: 18px;
+    }
   }
 }

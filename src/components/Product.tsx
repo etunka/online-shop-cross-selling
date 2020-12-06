@@ -43,7 +43,11 @@ export const Product: FC<Props> = ({
               <option value="">Kies je maat</option>
               {product.data.attributes.child_products.map((childProduct) => {
                 const value = childProduct.attributes[0].value;
-                return <option value={value}>{value}</option>;
+                return (
+                  <option value={value} key={value}>
+                    {value}
+                  </option>
+                );
               })}
             </select>
           </div>
